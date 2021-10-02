@@ -28,7 +28,7 @@ body {
 }
 .input {
     border-radius: 5px;
-    padding: 0;
+    padding-left: 6px;
     height:36px;
     margin-right: 10px;
     font-weight: bold;
@@ -44,4 +44,7 @@ body {
 .button_search:hover {
 cursor: pointer;
 background-color: blanchedalmond;
+}
+.result__list__item {
+    color:wheat;
 }
