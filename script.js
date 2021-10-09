@@ -9,11 +9,22 @@ flagCountry.style.visibility = "hidden";
 const result = document.querySelector('.result');
 result.style.visibility = "hidden";
 
+const itemList = document.querySelectorAll(".result__list__item");
+
 const randomNumberBackground = randomInteger(1, 7);
 document.body.style.backgroundImage = `url("${nameFolder}/${randomNumberBackground}.jpg")`;
+const input = document.querySelector(".input");
+
+input.addEventListener('focus', ()=> {
+  input.value ='';
+  itemList.forEach(item => {
+    item.textContent = "";
+    result.style.visibility = "hidden";
+  })
+
+})
 
 button.addEventListener("click", () => {
-  const input = document.querySelector(".input");
   const city_name = input.value ? input.value : "";
   const API_key = "0e3f4c3098c7d2107ce581907ae44eb7";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${API_key}&units=metric`;
@@ -21,8 +32,8 @@ button.addEventListener("click", () => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data, data.code);
-      if (data.cod === "200") {
+      console.log(data, data.cod);
+      if (data.cod === 200) {
         const codeCountry = data.sys.country;
         flagCountry.style.visibility = "visible";
         flagCountry.src = `https://www.countryflags.io/${codeCountry}/flat/64.png`;
@@ -47,10 +58,8 @@ button.addEventListener("click", () => {
         });
         result.style.visibility = "visible";
       } else {
-        const itemList = document.querySelectorAll(".result__list__item");
         itemList[0].textContent = data.message;
       }
-    
 
     });
 });
