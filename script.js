@@ -26,23 +26,15 @@ button.addEventListener("click", () => {
 
       const dataForLi = [];
       dataForLi[0] = `Облачность: ${data.clouds.all} %`;
-      dataForLi[1] = `Температура: ${data.main.temp} C${String.fromCharCode(
-        176
-      )}`;
-      dataForLi[2] = `Ощушаеться как: ${
-        data.main.feels_like
-      } C${String.fromCharCode(176)}`;
+      dataForLi[1] = `Температура: ${data.main.temp} C${String.fromCharCode(176)}`;
+      dataForLi[2] = `Ощушаеться как: ${data.main.feels_like} C${String.fromCharCode(176)}`;
       dataForLi[3] = `Влажность: ${data.main.humidity} %`;
       dataForLi[4] = `Давление: ${data.main.pressure} мм.рт.ст.`;
       dataForLi[5] = `Максимальная температура: ${
         data.main.temp_max
       } C${String.fromCharCode(176)}`;
-      dataForLi[6] = `Минимальная температура: ${
-        data.main.temp_min
-      } C${String.fromCharCode(176)}`;
-      dataForLi[7] = `Направление ветра: ${data.wind.deg} ${String.fromCharCode(
-        176
-      )}`;
+      dataForLi[6] = `Минимальная температура: ${data.main.temp_min} C${String.fromCharCode(176)}`;
+      dataForLi[7] = `Направление ветра: ${data.wind.deg} ${String.fromCharCode(176)}`;
       dataForLi[8] = `Скорость ветра: ${data.wind.speed} м/с.`;
 
       const itemList = document.querySelectorAll(".result__list__item");
