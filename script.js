@@ -15,20 +15,25 @@ const randomNumberBackground = randomInteger(1, 7);
 document.body.style.backgroundImage = `url("${nameFolder}/${randomNumberBackground}.jpg")`;
 const input = document.querySelector(".input");
 
-input.addEventListener('focus', ()=> {
+input.addEventListener('focus', () => {
   input.value ='';
   itemList.forEach(item => {
     item.textContent = "";
     result.style.visibility = "hidden";
+    flagCountry.style.visibility = "hidden";
   })
 
 })
 
 button.addEventListener("click", () => {
-  const city_name = input.value ? input.value : "";
+  let  city_name = "";
+  if (input.value) {
+    city_name = input.value
+  } else {
+    city_name = "";
+  } 
   const API_key = "0e3f4c3098c7d2107ce581907ae44eb7";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${API_key}&units=metric`;
-
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
@@ -59,6 +64,7 @@ button.addEventListener("click", () => {
         result.style.visibility = "visible";
       } else {
         itemList[0].textContent = data.message;
+        result.style.visibility = "visible";
       }
 
     });
